@@ -1,189 +1,175 @@
-# TTS Models Reference Guide
+# TTS Models Comprehensive Database
 
 ## Text-to-Speech (TTS) Models
 
 ### Multilingual Models
 
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **xtts_v2** | Multilingual | multi-dataset | Advanced multilingual TTS model supporting 17 languages with cross-language voice cloning capabilities. Latest version from Coqui AI with improved quality and stability. | None (End-to-end) |
-| **xtts_v1.1** | Multilingual | multi-dataset | Multilingual TTS model supporting 14 languages with cross-language voice cloning. Includes reference leak fixes for better voice consistency. | None (End-to-end) |
-| **your_tts** | Multilingual | multi-dataset | Research-grade multilingual TTS model accompanying the paper "YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion". | None (End-to-end) |
-| **bark** | Multilingual | multi-dataset | Generative audio model from Suno AI capable of producing highly realistic speech with emotions, music, and sound effects. | None (End-to-end) |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **xtts_v2** | multilingual | multi-dataset | tts_models | XTTS-v2.0.3 by Coqui with 17 languages support. This is an advanced multilingual text-to-speech model capable of generating high-quality speech in 17 different languages with cross-language voice cloning capabilities. | None | `tts_models/multilingual/multi-dataset/xtts_v2` |
+| **xtts_v1.1** | multilingual | multi-dataset | tts_models | XTTS-v1.1 by Coqui with 14 languages, cross-language voice cloning and reference leak fixed. An improved version of the original XTTS model with enhanced voice cloning capabilities and bug fixes for reference leak issues. | None | `tts_models/multilingual/multi-dataset/xtts_v1.1` |
+| **your_tts** | multilingual | multi-dataset | tts_models | Your TTS model accompanying the research paper available at https://arxiv.org/abs/2112.02418. This model represents a significant advancement in multilingual TTS technology with zero-shot voice cloning capabilities. | None | `tts_models/multilingual/multi-dataset/your_tts` |
+| **bark** | multilingual | multi-dataset | tts_models | 🐶 Bark TTS model released by suno-ai. This innovative model can generate highly realistic speech with various emotions and speaking styles. The original implementation can be found at https://github.com/suno-ai/bark. | None | `tts_models/multilingual/multi-dataset/bark` |
 
 ### English Models
 
-#### LJSpeech Dataset
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2-DDC** | ljspeech | Tacotron2 with Double Decoder Consistency for improved speech quality and stability. | hifigan_v2 |
-| **tacotron2-DDC_ph** | ljspeech | Tacotron2 with Double Decoder Consistency trained with phonemes for better pronunciation accuracy. | univnet |
-| **glow-tts** | ljspeech | Flow-based TTS model offering fast parallel synthesis with good quality. | multiband-melgan |
-| **speedy-speech** | ljspeech | Fast, non-autoregressive TTS model using Alignment Network for duration prediction. | hifigan_v2 |
-| **tacotron2-DCA** | ljspeech | Tacotron2 with Decoder Consistency Architecture for enhanced speech synthesis. | multiband-melgan |
-| **vits** | ljspeech | End-to-end TTS model combining variational inference with adversarial training for high-quality speech. | None (End-to-end) |
-| **vits--neon** | ljspeech | Enhanced VITS model with optimizations for improved performance and quality. | None (End-to-end) |
-| **fast_pitch** | ljspeech | FastPitch model using Aligner Network for fast, high-quality speech synthesis. | hifigan_v2 |
-| **overflow** | ljspeech | Overflow model designed for robust and high-quality speech synthesis. | hifigan_v2 |
-| **neural_hmm** | ljspeech | Neural Hidden Markov Model approach to TTS with probabilistic duration modeling. | hifigan_v2 |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **tacotron2** | en | ek1 | tts_models | EK1 en-rp tacotron2 by NMStoker. A British English (Received Pronunciation) Tacotron2 model trained on the EK1 dataset, providing high-quality British accent speech synthesis. | `vocoder_models/en/ek1/wavegrad` | `tts_models/en/ek1/tacotron2` |
+| **tacotron2-DDC** | en | ljspeech | tts_models | Tacotron2 with Double Decoder Consistency. An enhanced version of Tacotron2 that uses double decoder consistency for improved speech quality and stability during training. | `vocoder_models/en/ljspeech/hifigan_v2` | `tts_models/en/ljspeech/tacotron2-DDC` |
+| **tacotron2-DDC_ph** | en | ljspeech | tts_models | Tacotron2 with Double Decoder Consistency with phonemes. This model incorporates phoneme-level processing for more accurate pronunciation and better speech quality. | `vocoder_models/en/ljspeech/univnet` | `tts_models/en/ljspeech/tacotron2-DDC_ph` |
+| **glow-tts** | en | ljspeech | tts_models | Glow-TTS model trained on LJSpeech dataset. A flow-based generative model that provides fast and high-quality speech synthesis with improved training stability. | `vocoder_models/en/ljspeech/multiband-melgan` | `tts_models/en/ljspeech/glow-tts` |
+| **speedy-speech** | en | ljspeech | tts_models | Speedy Speech model trained on LJSpeech dataset using the Alignment Network for learning the durations. This model focuses on fast inference while maintaining speech quality. | `vocoder_models/en/ljspeech/hifigan_v2` | `tts_models/en/ljspeech/speedy-speech` |
+| **tacotron2-DCA** | en | ljspeech | tts_models | Tacotron2 with Decoder Consistency Algorithm. An advanced version of Tacotron2 with improved decoder consistency for better speech synthesis quality. | `vocoder_models/en/ljspeech/multiband-melgan` | `tts_models/en/ljspeech/tacotron2-DCA` |
+| **vits** | en | ljspeech | tts_models | VITS is an End2End TTS model trained on LJSpeech dataset with phonemes. A cutting-edge end-to-end TTS model that combines variational inference with adversarial learning for high-quality speech synthesis. | None | `tts_models/en/ljspeech/vits` |
+| **vits--neon** | en | ljspeech | tts_models | VITS model with Neon optimizations. An optimized version of VITS for improved performance and efficiency. | None | `tts_models/en/ljspeech/vits--neon` |
+| **fast_pitch** | en | ljspeech | tts_models | FastPitch model trained on LJSpeech using the Aligner Network. A non-autoregressive model that provides fast and parallel speech synthesis with controllable pitch and duration. | `vocoder_models/en/ljspeech/hifigan_v2` | `tts_models/en/ljspeech/fast_pitch` |
+| **overflow** | en | ljspeech | tts_models | Overflow model trained on LJSpeech dataset. A specialized TTS model designed for handling long-form text synthesis with consistent quality. | `vocoder_models/en/ljspeech/hifigan_v2` | `tts_models/en/ljspeech/overflow` |
+| **neural_hmm** | en | ljspeech | tts_models | Neural HMM model trained on LJSpeech dataset. A hybrid model combining neural networks with Hidden Markov Models for robust speech synthesis. | `vocoder_models/en/ljspeech/hifigan_v2` | `tts_models/en/ljspeech/neural_hmm` |
+| **vits** | en | vctk | tts_models | VITS End2End TTS model trained on VCTK dataset with 109 different speakers with EN accent. Multi-speaker model capable of generating speech with various English accents and speaker characteristics. | None | `tts_models/en/vctk/vits` |
+| **fast_pitch** | en | vctk | tts_models | FastPitch model trained on VCTK dataset. Multi-speaker FastPitch model supporting various English speakers and accents. | None | `tts_models/en/vctk/fast_pitch` |
+| **tacotron-DDC** | en | sam | tts_models | Tacotron2 with Double Decoder Consistency trained with Accenture's Sam dataset. Professional-grade TTS model trained on high-quality corporate speech data. | `vocoder_models/en/sam/hifigan_v2` | `tts_models/en/sam/tacotron-DDC` |
+| **capacitron-t2-c50** | en | blizzard2013 | tts_models | Capacitron additions to Tacotron 2 with Capacity at 50 as described in https://arxiv.org/pdf/1906.03402.pdf. Enhanced model with improved capacity for handling complex speech patterns. | `vocoder_models/en/blizzard2013/hifigan_v2` | `tts_models/en/blizzard2013/capacitron-t2-c50` |
+| **capacitron-t2-c150_v2** | en | blizzard2013 | tts_models | Capacitron additions to Tacotron 2 with Capacity at 150 as described in https://arxiv.org/pdf/1906.03402.pdf. Higher capacity version for even more complex speech synthesis tasks. | `vocoder_models/en/blizzard2013/hifigan_v2` | `tts_models/en/blizzard2013/capacitron-t2-c150_v2` |
+| **tortoise-v2** | en | multi-dataset | tts_models | Tortoise TTS model version 2 from https://github.com/neonbjb/tortoise-tts. Advanced TTS model known for extremely high-quality speech synthesis with natural prosody and emotion. | None | `tts_models/en/multi-dataset/tortoise-v2` |
+| **jenny** | en | jenny | tts_models | VITS model trained with Jenny(Dioco) dataset. Named as Jenny as demanded by the license. Original model available at https://www.kaggle.com/datasets/noml4u/tts-models--en--jenny-dioco--vits. Single-speaker female voice model. | None | `tts_models/en/jenny/jenny` |
 
-#### VCTK Dataset (Multi-speaker)
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **vits** | vctk | Multi-speaker VITS model trained on 109 different English speakers with various accents. | None (End-to-end) |
-| **fast_pitch** | vctk | Multi-speaker FastPitch model supporting various English speakers and accents. | None (End-to-end) |
+### European Language Models
 
-#### Other English Datasets
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2** | ek1 | Tacotron2 model trained on EK1 dataset with received pronunciation (RP) English accent. | wavegrad |
-| **tacotron-DDC** | sam | Tacotron2 with Double Decoder Consistency trained on Accenture's Sam dataset. | hifigan_v2 |
-| **capacitron-t2-c50** | blizzard2013 | Tacotron2 enhanced with Capacitron attention mechanism (capacity=50) for improved long-form synthesis. | hifigan_v2 |
-| **capacitron-t2-c150_v2** | blizzard2013 | Advanced Capacitron model with higher capacity (150) for better attention and longer sequences. | hifigan_v2 |
-| **tortoise-v2** | multi-dataset | High-quality TTS model optimized for expressiveness and natural speech patterns. | None (End-to-end) |
-| **jenny** | jenny | VITS model trained on Jenny (Dioco) dataset, providing clear female voice synthesis. | None (End-to-end) |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **vits** | bg | cv | tts_models | Bulgarian VITS model trained on Common Voice dataset. High-quality Bulgarian text-to-speech synthesis using the VITS architecture. | None | `tts_models/bg/cv/vits` |
+| **vits** | cs | cv | tts_models | Czech VITS model trained on Common Voice dataset. Comprehensive Czech TTS model for natural speech synthesis. | None | `tts_models/cs/cv/vits` |
+| **vits** | da | cv | tts_models | Danish VITS model trained on Common Voice dataset. Advanced Danish speech synthesis model. | None | `tts_models/da/cv/vits` |
+| **vits** | et | cv | tts_models | Estonian VITS model trained on Common Voice dataset. High-quality Estonian TTS model. | None | `tts_models/et/cv/vits` |
+| **vits** | ga | cv | tts_models | Irish Gaelic VITS model trained on Common Voice dataset. Specialized model for Irish language speech synthesis. | None | `tts_models/ga/cv/vits` |
+| **tacotron2-DDC** | es | mai | tts_models | Spanish Tacotron2 with Double Decoder Consistency trained on MAI dataset. Professional Spanish TTS model with enhanced consistency. | `vocoder_models/universal/libri-tts/fullband-melgan` | `tts_models/es/mai/tacotron2-DDC` |
+| **vits** | es | css10 | tts_models | Spanish VITS model trained on CSS10 dataset. High-quality Spanish speech synthesis model. | None | `tts_models/es/css10/vits` |
+| **tacotron2-DDC** | fr | mai | tts_models | French Tacotron2 with Double Decoder Consistency trained on MAI dataset. Professional French TTS model. | `vocoder_models/universal/libri-tts/fullband-melgan` | `tts_models/fr/mai/tacotron2-DDC` |
+| **vits** | fr | css10 | tts_models | French VITS model trained on CSS10 dataset. Advanced French speech synthesis model. | None | `tts_models/fr/css10/vits` |
+| **glow-tts** | uk | mai | tts_models | Ukrainian Glow-TTS model trained on MAI dataset. Flow-based Ukrainian TTS model. | `vocoder_models/uk/mai/multiband-melgan` | `tts_models/uk/mai/glow-tts` |
+| **vits** | uk | mai | tts_models | Ukrainian VITS model trained on MAI dataset. High-quality Ukrainian speech synthesis. | None | `tts_models/uk/mai/vits` |
+| **tacotron2-DDC** | nl | mai | tts_models | Dutch Tacotron2 with Double Decoder Consistency trained on MAI dataset. Professional Dutch TTS model. | `vocoder_models/nl/mai/parallel-wavegan` | `tts_models/nl/mai/tacotron2-DDC` |
+| **vits** | nl | css10 | tts_models | Dutch VITS model trained on CSS10 dataset. Advanced Dutch speech synthesis model. | None | `tts_models/nl/css10/vits` |
+| **tacotron2-DCA** | de | thorsten | tts_models | German Tacotron2 with Decoder Consistency Algorithm trained on Thorsten dataset. High-quality German TTS model. | `vocoder_models/de/thorsten/fullband-melgan` | `tts_models/de/thorsten/tacotron2-DCA` |
+| **vits** | de | thorsten | tts_models | German VITS model trained on Thorsten dataset. Advanced German speech synthesis model. | None | `tts_models/de/thorsten/vits` |
+| **tacotron2-DDC** | de | thorsten | tts_models | Thorsten-Dec2021-22k-DDC German model with Double Decoder Consistency. Updated German TTS model with improved quality. | `vocoder_models/de/thorsten/hifigan_v1` | `tts_models/de/thorsten/tacotron2-DDC` |
+| **vits-neon** | de | css10 | tts_models | German VITS model with Neon optimizations trained on CSS10 dataset. Optimized German TTS model. | None | `tts_models/de/css10/vits-neon` |
+| **vits** | hu | css10 | tts_models | Hungarian VITS model trained on CSS10 dataset. High-quality Hungarian speech synthesis. | None | `tts_models/hu/css10/vits` |
+| **vits** | el | cv | tts_models | Greek VITS model trained on Common Voice dataset. Advanced Greek TTS model. | None | `tts_models/el/cv/vits` |
+| **vits** | fi | css10 | tts_models | Finnish VITS model trained on CSS10 dataset. Comprehensive Finnish speech synthesis model. | None | `tts_models/fi/css10/vits` |
+| **vits** | hr | cv | tts_models | Croatian VITS model trained on Common Voice dataset. High-quality Croatian TTS model. | None | `tts_models/hr/cv/vits` |
+| **vits** | lt | cv | tts_models | Lithuanian VITS model trained on Common Voice dataset. Advanced Lithuanian speech synthesis. | None | `tts_models/lt/cv/vits` |
+| **vits** | lv | cv | tts_models | Latvian VITS model trained on Common Voice dataset. Professional Latvian TTS model. | None | `tts_models/lv/cv/vits` |
+| **vits** | mt | cv | tts_models | Maltese VITS model trained on Common Voice dataset. Specialized Maltese speech synthesis model. | None | `tts_models/mt/cv/vits` |
+| **vits** | pl | mai_female | tts_models | Polish VITS model with female voice trained on MAI dataset. High-quality Polish female TTS model. | None | `tts_models/pl/mai_female/vits` |
+| **vits** | pt | cv | tts_models | Portuguese VITS model trained on Common Voice dataset. Comprehensive Portuguese TTS model. | None | `tts_models/pt/cv/vits` |
+| **vits** | ro | cv | tts_models | Romanian VITS model trained on Common Voice dataset. Advanced Romanian speech synthesis. | None | `tts_models/ro/cv/vits` |
+| **vits** | sk | cv | tts_models | Slovak VITS model trained on Common Voice dataset. Professional Slovak TTS model. | None | `tts_models/sk/cv/vits` |
+| **vits** | sl | cv | tts_models | Slovenian VITS model trained on Common Voice dataset. High-quality Slovenian speech synthesis. | None | `tts_models/sl/cv/vits` |
+| **vits** | sv | cv | tts_models | Swedish VITS model trained on Common Voice dataset. Advanced Swedish TTS model. | None | `tts_models/sv/cv/vits` |
+| **glow-tts** | it | mai_female | tts_models | Italian Glow-TTS model with female voice as explained in https://github.com/coqui-ai/TTS/issues/1148. Female Italian TTS model with flow-based architecture. | None | `tts_models/it/mai_female/glow-tts` |
+| **vits** | it | mai_female | tts_models | Italian VITS model with female voice as explained in https://github.com/coqui-ai/TTS/issues/1148. High-quality female Italian speech synthesis. | None | `tts_models/it/mai_female/vits` |
+| **glow-tts** | it | mai_male | tts_models | Italian Glow-TTS model with male voice as explained in https://github.com/coqui-ai/TTS/issues/1148. Male Italian TTS model with flow-based architecture. | None | `tts_models/it/mai_male/glow-tts` |
+| **vits** | it | mai_male | tts_models | Italian VITS model with male voice as explained in https://github.com/coqui-ai/TTS/issues/1148. High-quality male Italian speech synthesis. | None | `tts_models/it/mai_male/vits` |
+| **glow-tts** | tr | common-voice | tts_models | Turkish GlowTTS model using an unknown speaker from the Common-Voice dataset. High-quality Turkish speech synthesis with flow-based architecture. | `vocoder_models/tr/common-voice/hifigan` | `tts_models/tr/common-voice/glow-tts` |
+| **glow-tts** | be | common-voice | tts_models | Belarusian GlowTTS model created by @alex73 (Github). Community-contributed Belarusian TTS model with flow-based architecture. | `vocoder_models/be/common-voice/hifigan` | `tts_models/be/common-voice/glow-tts` |
 
-### European Languages
+### Asian Language Models
 
-#### Spanish Models
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2-DDC** | mai | Spanish TTS model with Double Decoder Consistency for improved speech quality. | fullband-melgan |
-| **vits** | css10 | End-to-end Spanish TTS model trained on CSS10 dataset for natural speech synthesis. | None (End-to-end) |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **tacotron2-DDC-GST** | zh-CN | baker | tts_models | Chinese Tacotron2 with Double Decoder Consistency and Global Style Tokens trained on Baker dataset. Advanced Chinese TTS model with style control capabilities. | None | `tts_models/zh-CN/baker/tacotron2-DDC-GST` |
+| **tacotron2-DDC** | ja | kokoro | tts_models | Tacotron2 with Double Decoder Consistency trained with Kokoro Speech Dataset. High-quality Japanese TTS model with emotional speech capabilities. | `vocoder_models/ja/kokoro/hifigan_v1` | `tts_models/ja/kokoro/tacotron2-DDC` |
 
-#### French Models
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2-DDC** | mai | French TTS model with Double Decoder Consistency architecture. | fullband-melgan |
-| **vits** | css10 | End-to-end French TTS model providing natural-sounding speech synthesis. | None (End-to-end) |
+### African Language Models
 
-#### German Models
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2-DCA** | thorsten | German TTS model with Decoder Consistency Architecture for high-quality synthesis. | fullband-melgan |
-| **vits** | thorsten | End-to-end German TTS model trained on Thorsten dataset for natural speech. | None (End-to-end) |
-| **tacotron2-DDC** | thorsten | German Tacotron2 model with Double Decoder Consistency (Dec2021 22k version). | hifigan_v1 |
-| **vits-neon** | css10 | Enhanced German VITS model with optimizations for improved performance. | None (End-to-end) |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **vits** | ewe | openbible | tts_models | Ewe VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Ewe language. | None | `tts_models/ewe/openbible/vits` |
+| **vits** | hau | openbible | tts_models | Hausa VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Hausa language. | None | `tts_models/hau/openbible/vits` |
+| **vits** | lin | openbible | tts_models | Lingala VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Lingala language. | None | `tts_models/lin/openbible/vits` |
+| **vits** | tw_akuapem | openbible | tts_models | Twi (Akuapem) VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Twi Akuapem dialect. | None | `tts_models/tw_akuapem/openbible/vits` |
+| **vits** | tw_asante | openbible | tts_models | Twi (Asante) VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Twi Asante dialect. | None | `tts_models/tw_asante/openbible/vits` |
+| **vits** | yor | openbible | tts_models | Yoruba VITS model trained on OpenBible dataset. Original work (audio and text) by Biblica available for free at www.biblica.com and open.bible. Religious text-based TTS model for Yoruba language. | None | `tts_models/yor/openbible/vits` |
 
-#### Italian Models
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **glow-tts** | mai_female | Italian female voice GlowTTS model for fast parallel synthesis. | None (End-to-end) |
-| **vits** | mai_female | Italian female voice VITS model for high-quality speech synthesis. | None (End-to-end) |
-| **glow-tts** | mai_male | Italian male voice GlowTTS model providing masculine voice characteristics. | None (End-to-end) |
-| **vits** | mai_male | Italian male voice VITS model for natural male speech synthesis. | None (End-to-end) |
+### Custom Language Models
 
-#### Dutch Models
-| Model Name | Dataset | Description | Vocoder |
-|------------|---------|-------------|---------|
-| **tacotron2-DDC** | mai | Dutch TTS model with Double Decoder Consistency for improved speech quality. | parallel-wavegan |
-| **vits** | css10 | End-to-end Dutch TTS model trained on CSS10 dataset for natural speech synthesis. | None (End-to-end) |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **vits** | ca | custom | tts_models | Catalan VITS model trained from zero with 101,460 utterances consisting of 257 speakers, approximately 138 hours of speech. Uses three datasets: Festcat, Google Catalan TTS, and Common Voice 8. Trained with TTS v0.8.0. More details at https://github.com/coqui-ai/TTS/discussions/930#discussioncomment-4466345 | None | `tts_models/ca/custom/vits` |
+| **glow-tts** | fa | custom | tts_models | Persian TTS female Glow-TTS model for text-to-speech purposes. Single-speaker female voice trained on persian-tts-dataset-female. Note: This model has no compatible vocoder, thus output quality may not be optimal. Dataset available at https://www.kaggle.com/datasets/magnoliasis/persian-tts-dataset-famale | None | `tts_models/fa/custom/glow-tts` |
+| **vits-male** | bn | custom | tts_models | Single speaker Bangla male VITS model. Comprehensive Bangla TTS model for male voice synthesis. For more information visit https://github.com/mobassir94/comprehensive-bangla-tts | None | `tts_models/bn/custom/vits-male` |
+| **vits-female** | bn | custom | tts_models | Single speaker Bangla female VITS model. Comprehensive Bangla TTS model for female voice synthesis. For more information visit https://github.com/mobassir94/comprehensive-bangla-tts | None | `tts_models/bn/custom/vits-female` |
 
-#### Other European Languages
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **glow-tts** | Ukrainian | mai | Ukrainian GlowTTS model for fast parallel speech synthesis. | multiband-melgan |
-| **vits** | Ukrainian | mai | Ukrainian VITS model for high-quality end-to-end speech synthesis. | None (End-to-end) |
-| **vits** | Bulgarian | cv | Bulgarian TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Czech | cv | Czech TTS model trained on Common Voice dataset for natural speech. | None (End-to-end) |
-| **vits** | Danish | cv | Danish TTS model providing natural-sounding speech synthesis. | None (End-to-end) |
-| **vits** | Estonian | cv | Estonian TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Irish | cv | Irish Gaelic TTS model for natural speech synthesis. | None (End-to-end) |
-| **vits** | Greek | cv | Greek TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Finnish | css10 | Finnish TTS model providing natural-sounding speech synthesis. | None (End-to-end) |
-| **vits** | Croatian | cv | Croatian TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Lithuanian | cv | Lithuanian TTS model for natural speech synthesis. | None (End-to-end) |
-| **vits** | Latvian | cv | Latvian TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Maltese | cv | Maltese TTS model providing natural-sounding speech synthesis. | None (End-to-end) |
-| **vits** | Polish | mai_female | Polish female voice TTS model for natural speech synthesis. | None (End-to-end) |
-| **vits** | Portuguese | cv | Portuguese TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Romanian | cv | Romanian TTS model for natural speech synthesis. | None (End-to-end) |
-| **vits** | Slovak | cv | Slovak TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Slovenian | cv | Slovenian TTS model providing natural-sounding speech synthesis. | None (End-to-end) |
-| **vits** | Swedish | cv | Swedish TTS model trained on Common Voice dataset. | None (End-to-end) |
-| **vits** | Hungarian | css10 | Hungarian TTS model for natural speech synthesis. | None (End-to-end) |
-| **glow-tts** | Belarusian | common-voice | Belarusian GlowTTS model created by @alex73 for fast synthesis. | hifigan |
-
-### Asian Languages
-
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **tacotron2-DDC-GST** | Chinese (Mandarin) | baker | Chinese TTS model with Global Style Tokens for expressive speech synthesis. | None (End-to-end) |
-| **tacotron2-DDC** | Japanese | kokoro | Japanese TTS model with Double Decoder Consistency trained on Kokoro dataset. | hifigan_v1 |
-
-### Middle Eastern & South Asian Languages
-
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **glow-tts** | Persian/Farsi | custom | Persian female voice GlowTTS model for text-to-speech synthesis. | None (End-to-end) |
-| **vits-male** | Bengali | custom | Bengali male voice VITS model for comprehensive Bangla TTS applications. | None (End-to-end) |
-| **vits-female** | Bengali | custom | Bengali female voice VITS model for natural Bangla speech synthesis. | None (End-to-end) |
-| **glow-tts** | Turkish | common-voice | Turkish GlowTTS model trained on Common Voice dataset. | hifigan |
-
-### African Languages
-
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **vits** | Ewe | openbible | Ewe language TTS model trained on biblical texts from Biblica. | None (End-to-end) |
-| **vits** | Hausa | openbible | Hausa language TTS model trained on biblical audio and text data. | None (End-to-end) |
-| **vits** | Lingala | openbible | Lingala language TTS model for Central African speech synthesis. | None (End-to-end) |
-| **vits** | Twi (Akuapem) | openbible | Twi Akuapem dialect TTS model trained on biblical texts. | None (End-to-end) |
-| **vits** | Twi (Asante) | openbible | Twi Asante dialect TTS model for Ghanaian speech synthesis. | None (End-to-end) |
-| **vits** | Yoruba | openbible | Yoruba language TTS model trained on biblical audio and text data. | None (End-to-end) |
-
-### Other Languages
-
-| Model Name | Language | Dataset | Description | Vocoder |
-|------------|----------|---------|-------------|---------|
-| **vits** | Catalan | custom | Catalan TTS model trained on multiple datasets (Festcat, Google Catalan TTS, Common Voice) with 257 speakers and 138 hours of speech. | None (End-to-end) |
+---
 
 ## Voice Conversion Models
 
-| Model Name | Language | Dataset | Description |
-|------------|----------|---------|-------------|
-| **freevc24** | Multilingual | vctk | Advanced voice conversion model supporting multilingual voice cloning and conversion based on FreeVC architecture. |
+| Model Name | Language | Dataset | Model Type | Description | Default Vocoder | Model Path |
+|------------|----------|---------|------------|-------------|-----------------|------------|
+| **freevc24** | multilingual | vctk | voice_conversion_models | FreeVC model trained on VCTK dataset from https://github.com/OlaWod/FreeVC. Advanced voice conversion model capable of converting voice characteristics while preserving linguistic content across multiple languages. | None | `voice_conversion_models/multilingual/vctk/freevc24` |
+
+---
 
 ## Vocoder Models
 
 ### Universal Vocoders
-| Model Name | Dataset | Description |
-|------------|---------|-------------|
-| **wavegrad** | libri-tts | Universal neural vocoder based on WaveGrad architecture for high-quality audio synthesis. |
-| **fullband-melgan** | libri-tts | Universal fullband MelGAN vocoder for high-fidelity audio generation across frequencies. |
 
-### Language-Specific Vocoders
+| Model Name | Language | Dataset | Model Type | Description | Model Path |
+|------------|----------|---------|------------|-------------|------------|
+| **wavegrad** | universal | libri-tts | vocoder_models | Universal WaveGrad vocoder trained on LibriTTS dataset. High-quality neural vocoder for converting mel-spectrograms to audio waveforms. | `vocoder_models/universal/libri-tts/wavegrad` |
+| **fullband-melgan** | universal | libri-tts | vocoder_models | Universal Fullband MelGAN vocoder trained on LibriTTS dataset. Advanced generative vocoder for high-fidelity audio synthesis with full frequency band coverage. | `vocoder_models/universal/libri-tts/fullband-melgan` |
 
-#### English Vocoders
-| Model Name | Dataset | Description |
-|------------|---------|-------------|
-| **wavegrad** | ek1 | English RP (Received Pronunciation) WaveGrad vocoder by NMStoker. |
-| **multiband-melgan** | ljspeech | Multi-band MelGAN vocoder optimized for LJSpeech dataset characteristics. |
-| **hifigan_v2** | ljspeech | High-fidelity GAN vocoder v2 providing excellent audio quality for English speech. |
-| **univnet** | ljspeech | Universal neural vocoder fine-tuned for TacotronDDC_ph spectrograms. |
-| **hifigan_v2** | blizzard2013 | HiFiGAN v2 vocoder adapted for Blizzard 2013 dataset characteristics. |
-| **hifigan_v2** | vctk | HiFiGAN v2 vocoder fine-tuned for multi-speaker VCTK dataset. |
-| **hifigan_v2** | sam | HiFiGAN v2 vocoder optimized for SAM dataset characteristics. |
+### English Vocoders
 
-#### European Language Vocoders
-| Model Name | Language | Dataset | Description |
-|------------|----------|---------|-------------|
-| **parallel-wavegan** | Dutch | mai | Parallel WaveGAN vocoder optimized for Dutch speech synthesis. |
-| **wavegrad** | German | thorsten | German WaveGrad vocoder for Thorsten dataset. |
-| **fullband-melgan** | German | thorsten | German fullband MelGAN vocoder for high-quality audio synthesis. |
-| **hifigan_v1** | German | thorsten | HiFiGAN v1 vocoder for Thorsten Neutral Dec2021 22k sample rate model. |
-| **multiband-melgan** | Ukrainian | mai | Multi-band MelGAN vocoder optimized for Ukrainian speech. |
-| **hifigan** | Turkish | common-voice | HiFiGAN vocoder trained on Turkish Common Voice dataset. |
-| **hifigan** | Belarusian | common-voice | Belarusian HiFiGAN vocoder created by @alex73. |
+| Model Name | Language | Dataset | Model Type | Description | Model Path |
+|------------|----------|---------|------------|-------------|------------|
+| **wavegrad** | en | ek1 | vocoder_models | EK1 English (Received Pronunciation) WaveGrad vocoder by NMStoker. Specialized vocoder for British English accent synthesis. | `vocoder_models/en/ek1/wavegrad` |
+| **multiband-melgan** | en | ljspeech | vocoder_models | Multi-band MelGAN vocoder trained on LJSpeech dataset. Efficient vocoder that processes multiple frequency bands simultaneously for faster inference. | `vocoder_models/en/ljspeech/multiband-melgan` |
+| **hifigan_v2** | en | ljspeech | vocoder_models | HiFiGAN v2 LJSpeech vocoder from https://arxiv.org/abs/2010.05646. State-of-the-art generative adversarial network-based vocoder for high-quality audio generation. | `vocoder_models/en/ljspeech/hifigan_v2` |
+| **univnet** | en | ljspeech | vocoder_models | UnivNet model fine-tuned on TacotronDDC_ph spectrograms for better compatibility. Universal neural vocoder optimized for phoneme-based TTS models. | `vocoder_models/en/ljspeech/univnet` |
+| **hifigan_v2** | en | blizzard2013 | vocoder_models | HiFiGAN v2 vocoder adapted for Blizzard2013 dataset from https://arxiv.org/abs/2010.05646. Professional-grade vocoder for high-quality speech synthesis. | `vocoder_models/en/blizzard2013/hifigan_v2` |
+| **hifigan_v2** | en | vctk | vocoder_models | HiFiGAN v2 fine-tuned for VCTK dataset, intended for use with tts_models/en/vctk/sc-glow-tts. Multi-speaker vocoder supporting various English accents. | `vocoder_models/en/vctk/hifigan_v2` |
+| **hifigan_v2** | en | sam | vocoder_models | HiFiGAN v2 fine-tuned for SAM dataset, intended for use with tts_models/en/sam/tacotron_DDC. Corporate-grade vocoder for professional speech synthesis. | `vocoder_models/en/sam/hifigan_v2` |
 
-#### Asian Language Vocoders
-| Model Name | Language | Dataset | Description |
-|------------|----------|---------|-------------|
-| **hifigan_v1** | Japanese | kokoro | HiFiGAN v1 vocoder trained for Japanese Kokoro dataset by @kaiidams. |
+### European Language Vocoders
+
+| Model Name | Language | Dataset | Model Type | Description | Model Path |
+|------------|----------|---------|------------|-------------|------------|
+| **parallel-wavegan** | nl | mai | vocoder_models | Parallel WaveGAN vocoder for Dutch language trained on MAI dataset. High-quality Dutch speech synthesis vocoder with parallel processing capabilities. | `vocoder_models/nl/mai/parallel-wavegan` |
+| **wavegrad** | de | thorsten | vocoder_models | WaveGrad vocoder for German language trained on Thorsten dataset. Diffusion-based vocoder for high-quality German speech synthesis. | `vocoder_models/de/thorsten/wavegrad` |
+| **fullband-melgan** | de | thorsten | vocoder_models | Fullband MelGAN vocoder for German language trained on Thorsten dataset. Advanced German vocoder with full frequency band coverage. | `vocoder_models/de/thorsten/fullband-melgan` |
+| **hifigan_v1** | de | thorsten | vocoder_models | HiFiGAN v1 vocoder for Thorsten Neutral Dec2021 22k sample rate Tacotron2 DDC model. Specialized German vocoder optimized for the Thorsten dataset. | `vocoder_models/de/thorsten/hifigan_v1` |
+| **multiband-melgan** | uk | mai | vocoder_models | Multi-band MelGAN vocoder for Ukrainian language trained on MAI dataset. Ukrainian speech synthesis vocoder with multi-band processing. | `vocoder_models/uk/mai/multiband-melgan` |
+| **hifigan** | tr | common-voice | vocoder_models | HiFiGAN vocoder for Turkish language using an unknown speaker from the Common-Voice dataset. High-quality Turkish speech synthesis vocoder. | `vocoder_models/tr/common-voice/hifigan` |
+| **hifigan** | be | common-voice | vocoder_models | Belarusian HiFiGAN vocoder created by @alex73 (Github). Community-contributed Belarusian speech synthesis vocoder. | `vocoder_models/be/common-voice/hifigan` |
+
+### Asian Language Vocoders
+
+| Model Name | Language | Dataset | Model Type | Description | Model Path |
+|------------|----------|---------|------------|-------------|------------|
+| **hifigan_v1** | ja | kokoro | vocoder_models | HiFiGAN v1 vocoder for Japanese language trained on Kokoro dataset by @kaiidams. High-quality Japanese speech synthesis vocoder with emotional speech capabilities. | `vocoder_models/ja/kokoro/hifigan_v1` |
 
 ---
 
-*Note: Models marked with "None (End-to-end)" are complete TTS systems that don't require separate vocoders. Models with specific vocoders listed require the corresponding vocoder for audio synthesis.*
+## Summary Statistics
 
+- **Total TTS Models**: 72 models
+- **Total Voice Conversion Models**: 1 model  
+- **Total Vocoder Models**: 18 models
+- **Languages Supported**: 40+ languages including multilingual models
+- **Architecture Types**: VITS, Tacotron2, Glow-TTS, FastPitch, Bark, XTTS, and more
+- **Key Features**: Cross-language voice cloning, multi-speaker support, emotional speech synthesis, and professional-grade quality
+
+## Usage Notes
+
+1. **Model Paths**: Use the exact model paths provided in the tables when loading models
+2. **Vocoder Compatibility**: Some models require specific vocoders for optimal performance
+3. **Language Support**: Multilingual models support multiple languages in a single model
+4. **Quality Levels**: Models vary from research-grade to production-ready quality
+5. **Licensing**: Some models have specific licensing requirements (e.g., Jenny model)
+6. **Community Contributions**: Several models are contributed by the community (indicated by contributor names)
 
 
 
